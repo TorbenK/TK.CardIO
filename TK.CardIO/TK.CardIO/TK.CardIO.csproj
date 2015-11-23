@@ -39,6 +39,7 @@
     <Compile Include="CardIO.cs" />
     <Compile Include="CardIOConfig.cs" />
     <Compile Include="CardIOResult.cs" />
+    <Compile Include="CardType.cs" />
     <Compile Include="ICardIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

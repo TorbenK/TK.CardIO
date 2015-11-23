@@ -12,6 +12,10 @@ namespace TK.CardIO
     public class CardIOResult
     {
         /// <summary>
+        /// Gets/Sets the type of the credit card
+        /// </summary>
+        public CardType CreditCardType { get; set; }
+        /// <summary>
         /// Gets/Sets if the scan was successfull
         /// </summary>
         public bool Success { get; set; }

@@ -11,6 +11,11 @@ namespace TK.CardIO
     /// </summary>
     public interface ICardIO
     {
+        /// <summary>
+        /// Starts a credit card scan
+        /// </summary>
+        /// <param name="config">Optional configurations</param>
+        /// <returns>Result of the scan process</returns>
         Task<CardIOResult> Scan(CardIOConfig config = null);
     }
 }

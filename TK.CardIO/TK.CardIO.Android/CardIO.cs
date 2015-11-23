@@ -37,9 +37,10 @@ namespace TK.CardIO.Android
                 if (data != null && data.HasExtra(CardIOActivity.ExtraScanResult))
                 {
                     CreditCard scanResult = (CreditCard)data.GetParcelableExtra(CardIOActivity.ExtraScanResult);
-
+                    
                     _currentScan._result = new CardIOResult
                     {
+                        CreditCardType = scanResult.CardType.ToPclCardType(),
                         CardNumber = scanResult.CardNumber,
                         Cvv = scanResult.Cvv,
                         Expiry = new DateTime(scanResult.ExpiryYear, scanResult.ExpiryMonth, 1),
@@ -84,5 +85,6 @@ namespace TK.CardIO.Android
 
             return this._result;
         }
+
     }
 }
