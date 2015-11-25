@@ -1,17 +1,18 @@
-using TK.CardIO;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
-using TK.CardIO.Android;
-using Card.IO;
+using Xamarin.Forms;
 
-[assembly: Dependency(typeof(TK.CardIO.Android.CardIO))]
+using TK.CardIO.Android;
+
+[assembly: Dependency(typeof(CardIO))]
 
 namespace TK.CardIO.Android
 {
+    using System.Threading.Tasks;
+    using TK.CardIO;
+    using System;
+    using Card.IO;
+
     /// <summary>
     /// Android implementation of the PayPal CardIO plugin
     /// </summary>

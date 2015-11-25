@@ -1,13 +1,14 @@
-﻿using TK.CardIO;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+﻿using System;
 using System.Threading.Tasks;
 using Card.IO;
 using UIKit;
+using Xamarin.Forms;
+
+[assembly: Dependency(typeof(TK.CardIO.iOSUnified.CardIO))]
 
 namespace TK.CardIO.iOSUnified
 {
+
     /// <summary>
     /// iOS implementation of the <c>CardIO</c> plugin
     /// </summary>
@@ -19,16 +20,14 @@ namespace TK.CardIO.iOSUnified
         private CardIOResult _result;
         private bool _finished;
 
-        /// <summary>
-        /// Creates a new instance of <c>CardIO</c>
-        /// </summary>
-        public CardIO()
-        {
-            this._paymentViewController = new CardIOPaymentViewController(this);
-        }
         /// <inheritdoc/>
         public async Task<CardIOResult> Scan(CardIOConfig config = null)
         {
+            if(this._paymentViewController == null)
+                this._paymentViewController = new CardIOPaymentViewController();
+            
+            if (config == null) config = new CardIOConfig();
+
             this._result = null;
             this._finished = false;
 
@@ -42,7 +41,8 @@ namespace TK.CardIO.iOSUnified
             if (!string.IsNullOrEmpty(config.Localization))
                 this._paymentViewController.LanguageOrLocale = config.Localization;
 
-            this._paymentViewController.ScanInstructions = config.ScanInstructions;
+            if(!string.IsNullOrEmpty(config.ScanInstructions))
+                this._paymentViewController.ScanInstructions = config.ScanInstructions;
 
             Device.BeginInvokeOnMainThread(() => 
             {
@@ -79,7 +79,7 @@ namespace TK.CardIO.iOSUnified
         /// <inheritdoc/>
         public IntPtr Handle
         {
-            get { return this._paymentViewController.Handle; }
+            get { return this._paymentViewController == null ? IntPtr.Zero : this._paymentViewController.Handle; }
         }
         /// <inheritdoc/>
         public void Dispose()

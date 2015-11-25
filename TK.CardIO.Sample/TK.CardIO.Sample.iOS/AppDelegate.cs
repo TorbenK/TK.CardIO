@@ -24,7 +24,7 @@ namespace TK.CardIO.Sample.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            TK.CardIO.iOSUnified.CardIO c = new iOSUnified.CardIO();
             return base.FinishedLaunching(app, options);
         }
     }

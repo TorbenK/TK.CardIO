@@ -49,6 +49,10 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>
+    </CodesignProvision>
+    <CodesignResourceRules />
+    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -97,6 +101,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TK.CardIO\TK.CardIO.iOSUnified\TK.CardIO.iOSUnified.csproj">
+      <Project>{d525f236-6a2d-4010-b1cc-4a4b8581c90b}</Project>
+      <Name>TK.CardIO.iOSUnified</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TK.CardIO\TK.CardIO\TK.CardIO.csproj">
+      <Project>{14c534b6-1984-41a9-a384-d3a5508588e3}</Project>
+      <Name>TK.CardIO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TK.CardIO.Sample\TK.CardIO.Sample.csproj">
       <Name>TK.CardIO.Sample</Name>
     </ProjectReference>
@@ -120,6 +134,10 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Card.IO, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bindings\Card.IO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
