@@ -46,7 +46,14 @@ namespace TK.CardIO.iOSUnified
 
             Device.BeginInvokeOnMainThread(() => 
             {
-                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(
+                var window= UIApplication.SharedApplication.KeyWindow;
+                var vc = window.RootViewController;
+                while (vc.PresentedViewController != null)
+                {
+                    vc = vc.PresentedViewController;
+                }
+
+                vc.PresentViewController(
                     this._paymentViewController,
                     true,
                     null);
@@ -56,6 +63,11 @@ namespace TK.CardIO.iOSUnified
 
             return this._result;
         }
+        /// <summary>
+        /// Just to prevent the linker from removing the assembly on iOS
+        /// </summary>
+        public static void Init()
+        { }
         /// <inheritdoc/>
         public void UserDidCancelPaymentViewController(CardIOPaymentViewController paymentViewController)
         {

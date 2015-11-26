@@ -23,8 +23,9 @@ namespace TK.CardIO.Sample.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            TK.CardIO.iOSUnified.CardIO.Init();
+
             LoadApplication(new App());
-            TK.CardIO.iOSUnified.CardIO c = new iOSUnified.CardIO();
             return base.FinishedLaunching(app, options);
         }
     }
